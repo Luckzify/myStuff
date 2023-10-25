@@ -2,9 +2,8 @@
 #Oct 24 2023
 #Finds derivative of polynomials using power rule
 
-while True:
-    function = input('Enter function, f(x) = ') #gets function to be differentiated
-    termsList = function.split(" + ")#splits function into list of all terms
+def powerRule(func):
+    termsList = func.split(" + ")#splits function into list of all terms
     
     derivative = '' 
     
@@ -36,14 +35,22 @@ while True:
             diffTerm = ''
         elif diffTerm.find('x^0') != -1:
             diffTerm = diffTerm[:diffTerm.find('x^0')]
+        elif diffTerm.find('x^1') != -1:
+            diffTerm = diffTerm[:diffTerm.find('^1')]
 
         if termsList.index(term) == 0 or diffTerm == '': #adds with no " + " before in case of first term, or does not add at all in case of blank term
             derivative += diffTerm
         else: #adds term with " + " prefacing
             derivative += f" + {diffTerm}"
 
-    print(f"The derivative is, f'(x) = {derivative}")
-        
+    print(f"The derivative, f'(x) = {derivative}")
+    return(derivative)
+
+if __name__ == "__main__":
+    while True:
+        function = input("Enter function, f(x) = ")
+        powerRule(function)
+            
             
     
                     
