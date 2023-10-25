@@ -54,7 +54,7 @@ def productRule(func):
         
         factorsList_noPARENTHESIS.insert(len(factorsList_noPARENTHESIS),factor)
         
-    derivative = f"({powerRule(factorsList_noPARENTHESIS[0])} * {factorsList_noPARENTHESIS[1]}) + ({factorsList_noPARENTHESIS[0]} * {powerRule(factorsList_noPARENTHESIS[1])})" 
+    derivative = f"(({powerRule(factorsList_noPARENTHESIS[0])}) * ({factorsList_noPARENTHESIS[1]})) + (({factorsList_noPARENTHESIS[0]}) * ({powerRule(factorsList_noPARENTHESIS[1])}))" 
     return(derivative)
 
 
