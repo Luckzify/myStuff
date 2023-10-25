@@ -43,17 +43,25 @@ def powerRule(func):
         else: #adds term with " + " prefacing
             derivative += f" + {diffTerm}"
 
-    print(f"The derivative, f'(x) = {derivative}")
     return(derivative)
+
+def productRule(func):
+    derivative=''
+    factorsList = func.split(' * ')
+    factorsList_noPARENTHESIS = []
+    for factor in factorsList:
+        factor = factor[1:(factor.find(')'))]
+        
+        factorsList_noPARENTHESIS.insert(len(factorsList_noPARENTHESIS),factor)
+        
+    derivative = f"({powerRule(factorsList_noPARENTHESIS[0])} * {factorsList_noPARENTHESIS[1]}) + ({factorsList_noPARENTHESIS[0]} * {powerRule(factorsList_noPARENTHESIS[1])})" 
+    return(derivative)
+
 
 if __name__ == "__main__":
     while True:
         function = input("Enter function, f(x) = ")
-        powerRule(function)
-            
-            
-    
-                    
-                    
-                    
-                    
+        if function.find('*') != -1: 
+            print(f"The derivative, f'(x) = {productRule(function)}")
+        else:
+            print(f"The derivative, f'(x) = {powerRule(function)}")
